@@ -6,28 +6,28 @@ const PokedexTabs = () => {
   const [generationTitle, setGenerationTitle] = useState<string | null>("All Generations");
   return (
     <Tabs id="controlled-tab" className="mb-3" defaultActiveKey={"All Generation"} onSelect={(e) => setGenerationTitle(e)}>
-      <Tab eventKey="All Generation" title="All Generation">
+      <Tab eventKey="All Generations" title="All Generations">
         <PokedexTable generationTitle={generationTitle} />
       </Tab>
-      <Tab eventKey="Generation 1" title="Generation 1">
+      <Tab eventKey="Generation 1 - Kanto Region" title="Generation 1">
         <PokedexTable generationTitle={generationTitle} />
       </Tab>
-      <Tab eventKey="Generation 2" title="Generation 2">
+      <Tab eventKey="Generation 2 - Johto Region" title="Generation 2">
         <PokedexTable generationTitle={generationTitle} />
       </Tab>
-      <Tab eventKey="Generation 3" title="Generation 3">
+      <Tab eventKey="Generation 3 - Hoenn Region" title="Generation 3">
         <PokedexTable generationTitle={generationTitle} />
       </Tab>
-      <Tab eventKey="Generation 4" title="Generation 4">
+      <Tab eventKey="Generation 4 - Sinnoh Region" title="Generation 4">
         <PokedexTable generationTitle={generationTitle} />
       </Tab>
-      <Tab eventKey="Generation 5" title="Generation 5">
+      <Tab eventKey="Generation 5 - Unova Region" title="Generation 5">
         <PokedexTable generationTitle={generationTitle} />
       </Tab>
-      <Tab eventKey="Generation 6" title="Generation 6">
+      <Tab eventKey="Generation 6 - Kalos Region" title="Generation 6">
         <PokedexTable generationTitle={generationTitle} />
       </Tab>
-      <Tab eventKey="Generation 7" title="Generation 7">
+      <Tab eventKey="Generation 7 - Alola Region" title="Generation 7">
         <PokedexTable generationTitle={generationTitle} />
       </Tab>
     </Tabs>
