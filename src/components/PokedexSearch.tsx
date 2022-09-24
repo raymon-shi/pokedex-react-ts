@@ -10,7 +10,7 @@ const PokedexSearch = () => {
   const [pokemonSearchResults, setPokemonSearchResults] = useState<IPokemon[]>([]);
   console.log(pokemonName);
 
-  const searchForPokemon = (pokemonSearchName: string) => {
+  const searchForPokemon = (pokemonSearchName: string):gitvoid => {
     setPokemonSearchResults(
       pokedex.filter((pokemon) => compareTwoStrings(pokemon.name.english.toLowerCase(), pokemonSearchName.toLowerCase()) >= 0.35),
     );
