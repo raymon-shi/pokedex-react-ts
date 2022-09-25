@@ -69,4 +69,75 @@
     "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/002.png",
     "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/002.png"
   }
+},{
+  "id": 3,
+  "name": {
+    "english": "Venusaur",
+    "japanese": "フシギバナ",
+    "chinese": "妙蛙花",
+    "french": "Florizarre"
+  },
+  "type": ["Grass", "Poison"],
+  "base": {
+    "HP": 80,
+    "Attack": 82,
+    "Defense": 83,
+    "Sp. Attack": 100,
+    "Sp. Defense": 100,
+    "Speed": 80
+  },
+  "species": "Seed Pokémon",
+  "description": "There is a large flower on Venusaur’s back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people.",
+  "evolution": { "prev": ["2", "Level 32"] },
+  "profile": {
+    "height": "2 m",
+    "weight": "100 kg",
+    "egg": ["Monster", "Grass"],
+    "ability": [
+      ["Overgrow", "false"],
+      ["Chlorophyll", "true"]
+    ],
+    "gender": "87.5:12.5"
+  },
+  "image": {
+    "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/003.png",
+    "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/003.png",
+    "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/003.png"
+  }
+},
+{
+  "id": 4,
+  "name": {
+    "english": "Charmander",
+    "japanese": "ヒトカゲ",
+    "chinese": "小火龙",
+    "french": "Salamèche"
+  },
+  "type": ["Fire"],
+  "base": {
+    "HP": 39,
+    "Attack": 52,
+    "Defense": 43,
+    "Sp. Attack": 60,
+    "Sp. Defense": 50,
+    "Speed": 65
+  },
+  "species": "Lizard Pokémon",
+  "description": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely.",
+  "evolution": { "next": [["5", "Level 16"]] },
+  "profile": {
+    "height": "0.6 m",
+    "weight": "8.5 kg",
+    "egg": ["Monster", "Dragon"],
+    "ability": [
+      ["Blaze", "false"],
+      ["Solar Power", "true"]
+    ],
+    "gender": "87.5:12.5"
+  },
+  "image": {
+    "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/004.png",
+    "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/004.png",
+    "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/004.png"
+  }
 }]
