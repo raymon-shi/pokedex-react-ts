@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import PokedexTabs from "./components/PokedexTabs";
 import PokedexSearch from "./components/PokedexSearch";
+import PokedexProfile from "./components/PokedexProfile";
 import { Tabs, Tab } from "react-bootstrap";
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
         </Tab>
         <Tab eventKey="table" title="Table">
           <PokedexTabs />
+        </Tab>
+        <Tab eventKey="profile" title="Profile">
+          <PokedexProfile id={2} />
         </Tab>
       </Tabs>
     </div>
