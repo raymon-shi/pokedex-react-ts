@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import pokedex from "../data/pokedex.json";
 import { IPokemon } from "../interface";
 import { compareTwoStrings } from "string-similarity";
 import PokedexSearchResults from "./PokedexSearchResults";
-import Select from "react-select";
-
-interface IOption {
-  value: string;
-  label: string;
-}
 
 const PokedexSearch = () => {
   const [pokemonName, setPokemonName] = useState<string>("");

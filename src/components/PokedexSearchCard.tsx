@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card, Container } from "react-bootstrap";
+import { useNavigate, NavigateFunction } from "react-router-dom";
 
 interface IPokedexSearchCard {
   id: number;
@@ -11,6 +12,7 @@ interface IPokedexSearchCard {
 }
 
 const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, species, description, thumbnail }) => {
+  const navigate: NavigateFunction = useNavigate();
   return (
     <>
       <Container style={{ textAlign: "center" }}>
@@ -33,7 +35,9 @@ const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, speci
             <Button style={{ width: "8rem" }} variant="danger">
               Remove
             </Button>
-            <Button style={{ width: "8rem" }}>View</Button>
+            <Button style={{ width: "8rem" }} onClick={() => navigate(`/profile/${id}/${name}`)}>
+              View
+            </Button>
           </Container>
         </Card>
       </Container>
