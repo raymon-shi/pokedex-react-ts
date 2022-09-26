@@ -2,6 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import pokedex from "../data/pokedex.json";
 import { IPokemon } from "../interface";
+import { useNavigate, NavigateFunction } from "react-router-dom";
 
 interface IProps {
   generationTitle: string | null;
@@ -17,6 +18,7 @@ const gen7: IPokemon[] = pokedex.slice(809);
 const gen0: IPokemon[] = pokedex.slice(0);
 
 const PokedexTable: React.FC<IProps> = ({ generationTitle }) => {
+  const navigate: NavigateFunction = useNavigate();
   const makePokedexTable = (generation: IPokemon[]) => {
     return (
       <Table responsive>
@@ -36,7 +38,12 @@ const PokedexTable: React.FC<IProps> = ({ generationTitle }) => {
                   <td>{pokemon.id}</td>
                   <td>{pokemon.name.english}</td>
                   <td>
-                    <img src={pokemon.image.thumbnail} alt="" style={{ height: 100 + "px", width: 100 + "px" }} />
+                    <img
+                      onClick={() => navigate(`/profile/${pokemon.id}/${pokemon.name.english}`, { replace: true })}
+                      src={pokemon.image.thumbnail}
+                      alt=""
+                      style={{ height: 100 + "px", width: 100 + "px" }}
+                    />
                   </td>
                   <td>{pokemon.type.length > 1 ? `${pokemon.type[0]}/${pokemon.type[1]}` : pokemon.type[0]}</td>
                 </tr>
