@@ -8,11 +8,11 @@ interface IProps {
   setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexParty: React.FC<IProps> = ({ party, setParty }) => {
+const PokedexParty: React.FC<IProps> = ({ party, setParty }): React.ReactElement => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = (): void => setShow(false);
+  const handleShow = (): void => setShow(true);
   return (
     <>
       <Button variant="primary" onClick={handleShow}>

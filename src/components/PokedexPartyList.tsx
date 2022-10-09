@@ -7,12 +7,14 @@ interface IProps {
   setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexPartyList: React.FC<IProps> = ({ party, setParty }) => {
+const PokedexPartyList: React.FC<IProps> = ({ party, setParty }): React.ReactElement => {
   return (
     <>
-      {party.map((member) => (
-        <PokedexPartyCard id={member.id} name={member.name} sprite={member.sprite} party={party} setParty={setParty} />
-      ))}
+      {party.map(
+        (member: IPokemonPartyMember): React.ReactElement => (
+          <PokedexPartyCard id={member.id} name={member.name} sprite={member.sprite} party={party} setParty={setParty} />
+        ),
+      )}
     </>
   );
 };

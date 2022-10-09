@@ -8,22 +8,24 @@ interface IPokedexSearchResultsProps {
   setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexSearchResults: React.FC<IPokedexSearchResultsProps> = ({ pokemonSearchResults, party, setParty }) => {
+const PokedexSearchResults: React.FC<IPokedexSearchResultsProps> = ({ pokemonSearchResults, party, setParty }): React.ReactElement => {
   return (
     <>
-      {pokemonSearchResults.map((pokemon) => (
-        <PokedexSearchCard
-          key={pokemon.id}
-          id={pokemon.id}
-          name={pokemon.name.english}
-          type={pokemon.type}
-          species={pokemon.species}
-          description={pokemon.description}
-          thumbnail={pokemon.image.thumbnail}
-          party={party}
-          setParty={setParty}
-        />
-      ))}
+      {pokemonSearchResults.map(
+        (pokemon: IPokemon): React.ReactElement => (
+          <PokedexSearchCard
+            key={pokemon.id}
+            id={pokemon.id}
+            name={pokemon.name.english}
+            type={pokemon.type}
+            species={pokemon.species}
+            description={pokemon.description}
+            thumbnail={pokemon.image.thumbnail}
+            party={party}
+            setParty={setParty}
+          />
+        ),
+      )}
     </>
   );
 };

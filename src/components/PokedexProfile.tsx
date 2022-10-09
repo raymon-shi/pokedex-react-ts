@@ -11,7 +11,7 @@ interface IProps {
   setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexProfile: React.FC<IProps> = ({ party, setParty }) => {
+const PokedexProfile: React.FC<IProps> = ({ party, setParty }): React.ReactElement => {
   const navigate: NavigateFunction = useNavigate();
   const { id } = useParams<{ id?: string }>();
 
@@ -52,18 +52,18 @@ const PokedexProfile: React.FC<IProps> = ({ party, setParty }) => {
           <Button
             style={{ width: "8rem" }}
             variant="success"
-            disabled={party.filter((member) => member.id === numID).length >= 1 || party.length === 6}
+            disabled={party.filter((member: IPokemonPartyMember): boolean => member.id === numID).length >= 1 || party.length === 6}
             onClick={() => {
-              setParty([...party, { id: numID, name: findPokemon(numID).name.english, sprite: pokedex[numID - 1].image.sprite }]);
+              setParty([...party, { id: numID, name: pokemon.name.english, sprite: pokedex[numID - 1].image.sprite }]);
             }}>
             Add
           </Button>
           <Button
             style={{ width: "8rem" }}
             variant="danger"
-            disabled={party.length === 0 || party.filter((member) => member.id === numID).length === 0}
-            onClick={() => {
-              setParty(party.filter((member) => member.id !== numID));
+            disabled={party.length === 0 || party.filter((member: IPokemonPartyMember): boolean => member.id === numID).length === 0}
+            onClick={(): void => {
+              setParty(party.filter((member: IPokemonPartyMember): boolean => member.id !== numID));
             }}>
             Remove
           </Button>
@@ -75,7 +75,7 @@ const PokedexProfile: React.FC<IProps> = ({ party, setParty }) => {
               {" "}
               {pokemon.id - 1 > 0 ? (
                 <img
-                  onClick={() => navigate(`/profile/${pokemon.id - 1}/${findPokemon(pokemon.id - 1).name.english}`, { replace: true })}
+                  onClick={(): void => navigate(`/profile/${pokemon.id - 1}/${pokemon.name.english}`, { replace: true })}
                   src={findPokemon(pokemon.id - 1).image.thumbnail || ""}
                   style={{ width: "100px" }}
                   alt=""
@@ -87,7 +87,7 @@ const PokedexProfile: React.FC<IProps> = ({ party, setParty }) => {
               {" "}
               {pokemon.id - 1 <= pokedex.length ? (
                 <img
-                  onClick={() => navigate(`/profile/${pokemon.id + 1}/${findPokemon(pokemon.id + 1).name.english}`, { replace: true })}
+                  onClick={(): void => navigate(`/profile/${pokemon.id + 1}/${findPokemon(pokemon.id + 1).name.english}`, { replace: true })}
                   src={findPokemon(pokemon.id + 1).image.thumbnail || ""}
                   style={{ width: "100px" }}
                   alt=""

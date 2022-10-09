@@ -12,7 +12,7 @@ interface IProps {
   sprite: string;
 }
 
-const PokedexPartyCard: React.FC<IProps> = ({ id, name, sprite, party, setParty }) => {
+const PokedexPartyCard: React.FC<IProps> = ({ id, name, sprite, party, setParty }): React.ReactElement => {
   const navigate: NavigateFunction = useNavigate();
   return (
     <>
@@ -24,7 +24,7 @@ const PokedexPartyCard: React.FC<IProps> = ({ id, name, sprite, party, setParty 
             <Button
               style={{ width: "8rem" }}
               variant="success"
-              disabled={party.filter((member) => member.id === id).length >= 1 || party.length === 6}
+              disabled={party.filter((member: IPokemonPartyMember): boolean => member.id === id).length >= 1 || party.length === 6}
               onClick={() => {
                 setParty([...party, { id, name, sprite: pokedex[id - 1].image.sprite }]);
               }}>
@@ -34,13 +34,13 @@ const PokedexPartyCard: React.FC<IProps> = ({ id, name, sprite, party, setParty 
             <Button
               style={{ width: "8rem" }}
               variant="danger"
-              disabled={party.length === 0 || party.filter((member) => member.id === id).length === 0}
+              disabled={party.length === 0 || party.filter((member: IPokemonPartyMember) => member.id === id).length === 0}
               onClick={() => {
-                setParty(party.filter((member) => member.id !== id));
+                setParty(party.filter((member: IPokemonPartyMember): boolean => member.id !== id));
               }}>
               Remove
             </Button>
-            <Button style={{ width: "8rem" }} onClick={() => navigate(`/profile/${id}/${name}`)}>
+            <Button style={{ width: "8rem" }} onClick={(): void => navigate(`/profile/${id}/${name}`)}>
               View
             </Button>
           </Container>

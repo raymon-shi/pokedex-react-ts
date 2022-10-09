@@ -8,7 +8,7 @@ import PokedexTableNavBar from "./components/PokedexTableNavBar";
 
 import { IPokemonPartyMember } from "./interface";
 
-const App = () => {
+const App: React.FC = (): React.ReactElement => {
   const [party, setParty] = useState<IPokemonPartyMember[]>([]);
   return (
     <>

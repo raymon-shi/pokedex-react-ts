@@ -10,14 +10,13 @@ interface IProps {
   setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexSearch: React.FC<IProps> = ({ party, setParty }) => {
-  const [pokemonName] = useState<string>("");
+const PokedexSearch: React.FC<IProps> = ({ party, setParty }): React.ReactElement => {
+  // const [pokemonName] = useState<string>("");
   const [pokemonSearchResults, setPokemonSearchResults] = useState<IPokemon[]>([]);
-  console.log(pokemonName);
 
   const searchForPokemon = (pokemonSearchName: string): void => {
     setPokemonSearchResults(
-      pokedex.filter((pokemon) => compareTwoStrings(pokemon.name.english.toLowerCase(), pokemonSearchName.toLowerCase()) >= 0.5),
+      pokedex.filter((pokemon: IPokemon): boolean => compareTwoStrings(pokemon.name.english.toLowerCase(), pokemonSearchName.toLowerCase()) >= 0.5),
     );
   };
 
@@ -26,7 +25,12 @@ const PokedexSearch: React.FC<IProps> = ({ party, setParty }) => {
       <Form style={{ textAlign: "left" }}>
         <Form.Group className="mb-3" controlId="formBasicSearch">
           <Form.Label>Enter the Pokemon name you want to search for</Form.Label>
-          <Form.Control type="text" placeholder="Enter the Pokemon you want to search!" autoComplete="off" onChange={(e) => searchForPokemon(e.target.value)} />
+          <Form.Control
+            type="text"
+            placeholder="Enter the Pokemon you want to search!"
+            autoComplete="off"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>): void => searchForPokemon(e.target.value)}
+          />
         </Form.Group>
       </Form>
       <br />

@@ -20,9 +20,9 @@ const gen6: IPokemon[] = pokedex.slice(649, 809);
 const gen7: IPokemon[] = pokedex.slice(809);
 const gen0: IPokemon[] = pokedex.slice(0);
 
-const PokedexTable: React.FC<IProps> = ({ generationTitle, party, setParty }) => {
+const PokedexTable: React.FC<IProps> = ({ generationTitle, party, setParty }): React.ReactElement => {
   const navigate: NavigateFunction = useNavigate();
-  const makePokedexTable = (generation: IPokemon[]) => {
+  const makePokedexTable = (generation: IPokemon[]): React.ReactElement => {
     return (
       <Table responsive>
         <thead>
@@ -36,14 +36,14 @@ const PokedexTable: React.FC<IProps> = ({ generationTitle, party, setParty }) =>
         </thead>
         <tbody>
           <>
-            {generation.map((pokemon, index) => {
+            {generation.map((pokemon: IPokemon, index: number): React.ReactElement => {
               return (
                 <tr key={index}>
                   <td>{pokemon.id}</td>
                   <td>{pokemon.name.english}</td>
                   <td>
                     <img
-                      onClick={() => navigate(`/profile/${pokemon.id}/${pokemon.name.english}`, { replace: true })}
+                      onClick={(): void => navigate(`/profile/${pokemon.id}/${pokemon.name.english}`, { replace: true })}
                       src={pokemon.image.thumbnail}
                       alt=""
                       style={{ height: 100 + "px", width: 100 + "px" }}
@@ -55,8 +55,8 @@ const PokedexTable: React.FC<IProps> = ({ generationTitle, party, setParty }) =>
                       <Button
                         style={{ width: "5rem", marginRight: 10 }}
                         variant="success"
-                        disabled={party.filter((member) => member.id === pokemon.id).length >= 1 || party.length === 6}
-                        onClick={() => {
+                        disabled={party.filter((member: IPokemonPartyMember): boolean => member.id === pokemon.id).length >= 1 || party.length === 6}
+                        onClick={(): void => {
                           setParty([...party, { id: pokemon.id, name: pokemon.name.english, sprite: pokemon.image.sprite }]);
                         }}>
                         Add
@@ -64,9 +64,9 @@ const PokedexTable: React.FC<IProps> = ({ generationTitle, party, setParty }) =>
                       <Button
                         style={{ width: "5rem" }}
                         variant="danger"
-                        disabled={party.length === 0 || party.filter((member) => member.id === pokemon.id).length === 0}
-                        onClick={() => {
-                          setParty(party.filter((member) => member.id !== pokemon.id));
+                        disabled={party.length === 0 || party.filter((member: IPokemonPartyMember): boolean => member.id === pokemon.id).length === 0}
+                        onClick={(): void => {
+                          setParty(party.filter((member: IPokemonPartyMember): boolean => member.id !== pokemon.id));
                         }}>
                         Remove
                       </Button>
@@ -80,7 +80,7 @@ const PokedexTable: React.FC<IProps> = ({ generationTitle, party, setParty }) =>
       </Table>
     );
   };
-  const getProperTable = (generationTitle: string | null) => {
+  const getProperTable = (generationTitle: string | null): React.ReactElement => {
     switch (generationTitle) {
       case "Generation 1 - Kanto Region":
         return makePokedexTable(gen1);

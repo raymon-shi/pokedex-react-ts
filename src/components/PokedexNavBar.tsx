@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const PokedexNavBar = () => {
+const PokedexNavBar: React.FC = (): React.ReactElement => {
   return (
     <>
       <Navbar bg="light" expand="lg">

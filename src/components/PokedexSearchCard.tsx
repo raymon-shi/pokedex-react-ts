@@ -15,7 +15,16 @@ interface IPokedexSearchCard {
   setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, species, description, thumbnail, party, setParty }) => {
+const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({
+  id,
+  name,
+  type,
+  species,
+  description,
+  thumbnail,
+  party,
+  setParty,
+}): React.ReactElement => {
   const navigate: NavigateFunction = useNavigate();
 
   return (
@@ -37,8 +46,8 @@ const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, speci
             <Button
               style={{ width: "8rem" }}
               variant="success"
-              disabled={party.filter((member) => member.id === id).length >= 1 || party.length === 6}
-              onClick={() => {
+              disabled={party.filter((member: IPokemonPartyMember): boolean => member.id === id).length >= 1 || party.length === 6}
+              onClick={(): void => {
                 setParty([...party, { id, name, sprite: pokedex[id - 1].image.sprite }]);
               }}>
               Add
@@ -47,12 +56,12 @@ const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, speci
               style={{ width: "8rem" }}
               variant="danger"
               disabled={party.length === 0 || party.filter((member) => member.id === id).length === 0}
-              onClick={() => {
-                setParty(party.filter((member) => member.id !== id));
+              onClick={(): void => {
+                setParty(party.filter((member: IPokemonPartyMember): boolean => member.id !== id));
               }}>
               Remove
             </Button>
-            <Button style={{ width: "8rem" }} onClick={() => navigate(`/profile/${id}/${name}`)}>
+            <Button style={{ width: "8rem" }} onClick={(): void => navigate(`/profile/${id}/${name}`)}>
               View
             </Button>
           </Container>

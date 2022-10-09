@@ -10,7 +10,7 @@ interface IProps {
   setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexHome: React.FC<IProps> = ({ party, setParty }) => {
+const PokedexHome: React.FC<IProps> = ({ party, setParty }): React.ReactElement => {
   return (
     <div className="App">
       <PokedexNavBar />
