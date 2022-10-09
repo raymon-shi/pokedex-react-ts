@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import pokedex from "../data/pokedex.json";
-import { IPokemon } from "../interface";
+import { IPokemon, IPokemonPartyMember } from "../interface";
 import { compareTwoStrings } from "string-similarity";
 import PokedexSearchResults from "./PokedexSearchResults";
 
-const PokedexSearch = () => {
-  const [pokemonName, setPokemonName] = useState<string>("");
+interface IProps {
+  party: IPokemonPartyMember[];
+  setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
+}
+
+const PokedexSearch: React.FC<IProps> = ({ party, setParty }) => {
+  const [pokemonName] = useState<string>("");
   const [pokemonSearchResults, setPokemonSearchResults] = useState<IPokemon[]>([]);
   console.log(pokemonName);
 
@@ -25,7 +30,7 @@ const PokedexSearch = () => {
         </Form.Group>
       </Form>
       <br />
-      <PokedexSearchResults pokemonSearchResults={pokemonSearchResults} />
+      <PokedexSearchResults pokemonSearchResults={pokemonSearchResults} party={party} setParty={setParty} />
     </Container>
   );
 };

@@ -1,12 +1,14 @@
 import React from "react";
-import { IPokemon } from "../interface";
+import { IPokemon, IPokemonPartyMember } from "../interface";
 import PokedexSearchCard from "./PokedexSearchCard";
 
 interface IPokedexSearchResultsProps {
   pokemonSearchResults: IPokemon[];
+  party: IPokemonPartyMember[];
+  setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexSearchResults: React.FC<IPokedexSearchResultsProps> = ({ pokemonSearchResults }) => {
+const PokedexSearchResults: React.FC<IPokedexSearchResultsProps> = ({ pokemonSearchResults, party, setParty }) => {
   return (
     <>
       {pokemonSearchResults.map((pokemon) => (
@@ -18,6 +20,8 @@ const PokedexSearchResults: React.FC<IPokedexSearchResultsProps> = ({ pokemonSea
           species={pokemon.species}
           description={pokemon.description}
           thumbnail={pokemon.image.thumbnail}
+          party={party}
+          setParty={setParty}
         />
       ))}
     </>

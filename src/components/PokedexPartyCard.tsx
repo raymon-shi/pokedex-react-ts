@@ -1,38 +1,25 @@
 import React from "react";
-import { Button, Card, Container } from "react-bootstrap";
-import { useNavigate, NavigateFunction } from "react-router-dom";
-import pokedex from "../data/pokedex.json";
+import { Card, Container, Button } from "react-bootstrap";
 import { IPokemonPartyMember } from "../interface";
+import { useNavigate, NavigateFunction } from "react-router";
+import pokedex from "../data/pokedex.json";
 
-interface IPokedexSearchCard {
-  id: number;
-  name: string;
-  type: string[];
-  species: string;
-  description: string;
-  thumbnail: string;
+interface IProps {
   party: IPokemonPartyMember[];
   setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
+  id: number;
+  name: string;
+  sprite: string;
 }
 
-const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, species, description, thumbnail, party, setParty }) => {
+const PokedexPartyCard: React.FC<IProps> = ({ id, name, sprite, party, setParty }) => {
   const navigate: NavigateFunction = useNavigate();
-
   return (
     <>
-      <Container style={{ textAlign: "center" }}>
-        <Card style={{ width: "35rem" }} className="mb-5">
-          <Container style={{ display: "flex", flexDirection: "row" }}>
-            <Card.Img variant="top" src={thumbnail} />
-            <Card.Body>
-              <Card.Title>{`#${id} - ${name}`}</Card.Title>
-              <Card.Text>{species}</Card.Text>
-              <Card.Text>{type}</Card.Text>
-              <hr />
-              <Card.Text>{description}</Card.Text>
-            </Card.Body>
-          </Container>
-          <hr />
+      <Card style={{ width: "200px" }}>
+        <Card.Img variant="top" src={sprite} />
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
           <Container style={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
             <Button
               style={{ width: "8rem" }}
@@ -57,10 +44,10 @@ const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, speci
               View
             </Button>
           </Container>
-        </Card>
-      </Container>
+        </Card.Body>
+      </Card>
     </>
   );
 };
 
-export default PokedexSearchCard;
+export default PokedexPartyCard;
