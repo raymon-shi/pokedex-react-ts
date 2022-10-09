@@ -16,7 +16,7 @@ const PokedexPartyCard: React.FC<IProps> = ({ id, name, sprite, party, setParty 
   const navigate: NavigateFunction = useNavigate();
   return (
     <>
-      <Card style={{ width: "200px" }}>
+      <Card style={{ width: "200px", marginBottom: 10 }}>
         <Card.Img variant="top" src={sprite} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
