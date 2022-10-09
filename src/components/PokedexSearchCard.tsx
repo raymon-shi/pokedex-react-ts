@@ -37,7 +37,7 @@ const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, speci
             <Button
               style={{ width: "8rem" }}
               variant="success"
-              disabled={party.filter((member) => member.id === id).length >= 1}
+              disabled={party.filter((member) => member.id === id).length >= 1 || party.length === 6}
               onClick={() => {
                 setParty([...party, { id, name, sprite: pokedex[id - 1].image.sprite }]);
               }}>
