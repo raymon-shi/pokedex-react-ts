@@ -2,14 +2,22 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import PokedexNavBar from "./PokedexNavBar";
 import PokedexTabs from "./PokedexTabs";
+import { IPokemonPartyMember } from "../interface";
+import PokedexParty from "./PokedexParty";
 
-const PokedexTableNavBar = () => {
+interface IProps {
+  party: IPokemonPartyMember[];
+  setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
+}
+
+const PokedexTableNavBar: React.FC<IProps> = ({ party, setParty }) => {
   return (
     <>
       <PokedexNavBar />
       <Container>
         <h1>Pokedex Tables</h1>
-        <PokedexTabs />
+        <PokedexParty party={party} setParty={setParty} />
+        <PokedexTabs party={party} setParty={setParty} />
       </Container>
     </>
   );

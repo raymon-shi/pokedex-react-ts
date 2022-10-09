@@ -1,11 +1,14 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import pokedex from "../data/pokedex.json";
-import { IPokemon } from "../interface";
+import { IPokemon, IPokemonPartyMember } from "../interface";
 import { useNavigate, NavigateFunction } from "react-router-dom";
+import { Container, Button } from "react-bootstrap";
 
 interface IProps {
   generationTitle: string | null;
+  party: IPokemonPartyMember[];
+  setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
 const gen1: IPokemon[] = pokedex.slice(0, 151);
@@ -17,7 +20,7 @@ const gen6: IPokemon[] = pokedex.slice(649, 809);
 const gen7: IPokemon[] = pokedex.slice(809);
 const gen0: IPokemon[] = pokedex.slice(0);
 
-const PokedexTable: React.FC<IProps> = ({ generationTitle }) => {
+const PokedexTable: React.FC<IProps> = ({ generationTitle, party, setParty }) => {
   const navigate: NavigateFunction = useNavigate();
   const makePokedexTable = (generation: IPokemon[]) => {
     return (
@@ -28,6 +31,7 @@ const PokedexTable: React.FC<IProps> = ({ generationTitle }) => {
             <th>Picture</th>
             <th>Name</th>
             <th>Type</th>
+            <th>Add/Remove From Party</th>
           </tr>
         </thead>
         <tbody>
@@ -46,6 +50,28 @@ const PokedexTable: React.FC<IProps> = ({ generationTitle }) => {
                     />
                   </td>
                   <td>{pokemon.type.length > 1 ? `${pokemon.type[0]}/${pokemon.type[1]}` : pokemon.type[0]}</td>
+                  <td>
+                    <Container style={{ textAlign: "center" }}>
+                      <Button
+                        style={{ width: "5rem", marginRight: 10 }}
+                        variant="success"
+                        disabled={party.filter((member) => member.id === pokemon.id).length >= 1 || party.length === 6}
+                        onClick={() => {
+                          setParty([...party, { id: pokemon.id, name: pokemon.name.english, sprite: pokemon.image.sprite }]);
+                        }}>
+                        Add
+                      </Button>
+                      <Button
+                        style={{ width: "5rem" }}
+                        variant="danger"
+                        disabled={party.length === 0 || party.filter((member) => member.id === pokemon.id).length === 0}
+                        onClick={() => {
+                          setParty(party.filter((member) => member.id !== pokemon.id));
+                        }}>
+                        Remove
+                      </Button>
+                    </Container>
+                  </td>
                 </tr>
               );
             })}

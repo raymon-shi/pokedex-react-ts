@@ -26,7 +26,7 @@ const PokedexSearch: React.FC<IProps> = ({ party, setParty }) => {
       <Form style={{ textAlign: "left" }}>
         <Form.Group className="mb-3" controlId="formBasicSearch">
           <Form.Label>Enter the Pokemon name you want to search for</Form.Label>
-          <Form.Control type="text" placeholder="Enter the Pokemon you want to search!" onChange={(e) => searchForPokemon(e.target.value)} />
+          <Form.Control type="text" placeholder="Enter the Pokemon you want to search!" autoComplete="off" onChange={(e) => searchForPokemon(e.target.value)} />
         </Form.Group>
       </Form>
       <br />
