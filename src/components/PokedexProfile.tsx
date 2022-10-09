@@ -1,11 +1,17 @@
 import React from "react";
-import { Container, Table, Row, Col } from "react-bootstrap";
-import { IPokemon } from "../interface";
+import { Container, Table, Row, Col, Button } from "react-bootstrap";
+import { IPokemon, IPokemonPartyMember } from "../interface";
 import pokedex from "../data/pokedex.json";
 import { useParams, useNavigate, NavigateFunction } from "react-router-dom";
 import PokedexNavBar from "./PokedexNavBar";
+import PokedexParty from "./PokedexParty";
 
-const PokedexProfile = () => {
+interface IProps {
+  party: IPokemonPartyMember[];
+  setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
+}
+
+const PokedexProfile: React.FC<IProps> = ({ party, setParty }) => {
   const navigate: NavigateFunction = useNavigate();
   const { id } = useParams<{ id?: string }>();
 
@@ -28,6 +34,8 @@ const PokedexProfile = () => {
     return pokedex[pokemonID - 1];
   };
 
+  const numID: number = parseInt(id as string);
+
   return (
     <>
       <PokedexNavBar />
@@ -37,7 +45,29 @@ const PokedexProfile = () => {
             <img style={{ marginLeft: "auto", marginRight: "auto" }} src={pokemon.image.hires || pokemon.image.thumbnail} alt="" />
           </Col>
         </Row>
-
+        <Container style={{ textAlign: "center" }}>
+          <PokedexParty party={party} setParty={setParty} />
+        </Container>
+        <Container style={{ textAlign: "center" }}>
+          <Button
+            style={{ width: "8rem" }}
+            variant="success"
+            disabled={party.filter((member) => member.id === numID).length >= 1 || party.length === 6}
+            onClick={() => {
+              setParty([...party, { id: numID, name: findPokemon(numID).name.english, sprite: pokedex[numID - 1].image.sprite }]);
+            }}>
+            Add
+          </Button>
+          <Button
+            style={{ width: "8rem" }}
+            variant="danger"
+            disabled={party.length === 0 || party.filter((member) => member.id === numID).length === 0}
+            onClick={() => {
+              setParty(party.filter((member) => member.id !== numID));
+            }}>
+            Remove
+          </Button>
+        </Container>
         <hr />
         <Container style={{ display: "flex", justifyContent: "center" }}>
           <Row>

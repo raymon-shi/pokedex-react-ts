@@ -43,7 +43,6 @@ const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, speci
               }}>
               Add
             </Button>
-
             <Button
               style={{ width: "8rem" }}
               variant="danger"
