@@ -13,7 +13,6 @@ const PokedexNavBar = () => {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/search">Search</Nav.Link>
               <Nav.Link href="/table">Table</Nav.Link>
-              <Nav.Link href="/table">Party</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
