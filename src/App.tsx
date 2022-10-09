@@ -15,7 +15,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<PokedexHome party={party} setParty={setParty} />} />
-          <Route path="/profile/:id/:pokemonName" element={<PokedexProfile />} />
+          <Route path="/profile/:id/:pokemonName" element={<PokedexProfile party={party} setParty={setParty} />} />
           <Route path="/table" element={<PokedexTableNavBar />} />
         </Routes>
       </BrowserRouter>
