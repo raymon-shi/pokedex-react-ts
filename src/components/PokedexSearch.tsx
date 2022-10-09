@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const PokedexSearch: React.FC<IProps> = ({ party, setParty }) => {
-  const [pokemonName, setPokemonName] = useState<string>("");
+  const [pokemonName] = useState<string>("");
   const [pokemonSearchResults, setPokemonSearchResults] = useState<IPokemon[]>([]);
   console.log(pokemonName);
 

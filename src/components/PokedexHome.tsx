@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import PokedexTabs from "./PokedexTabs";
+import React from "react";
 import PokedexSearch from "./PokedexSearch";
-import { Tabs, Tab, Container, Button, Offcanvas } from "react-bootstrap";
+import { Tabs, Tab, Container } from "react-bootstrap";
 import PokedexNavBar from "./PokedexNavBar";
 import PokedexParty from "./PokedexParty";
 import { IPokemonPartyMember } from "../interface";
