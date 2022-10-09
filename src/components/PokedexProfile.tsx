@@ -3,6 +3,7 @@ import { Container, Table, Row, Col } from "react-bootstrap";
 import { IPokemon } from "../interface";
 import pokedex from "../data/pokedex.json";
 import { useParams, useNavigate, NavigateFunction } from "react-router-dom";
+import PokedexNavBar from "./PokedexNavBar";
 
 const PokedexProfile = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -29,6 +30,7 @@ const PokedexProfile = () => {
 
   return (
     <>
+      <PokedexNavBar />
       <Container>
         <Row style={{ display: "flex", justifyContent: "center" }}>
           <Col xs={3}>
