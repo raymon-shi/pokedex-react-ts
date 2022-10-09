@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { Button, Offcanvas } from "react-bootstrap";
 import PokedexPartyList from "./PokedexPartyList";
+import { IPokemonPartyMember } from "../interface";
 
-const PokedexParty = () => {
+interface IProps {
+  party: IPokemonPartyMember[];
+  setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
+}
+
+const PokedexParty: React.FC<IProps> = ({ party, setParty }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -18,7 +24,7 @@ const PokedexParty = () => {
           <Offcanvas.Title>Pokemon Party</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <PokedexPartyList />
+          <PokedexPartyList party={party} setParty={setParty} />
         </Offcanvas.Body>
       </Offcanvas>
     </>

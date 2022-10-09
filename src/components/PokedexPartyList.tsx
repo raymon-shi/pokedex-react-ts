@@ -1,9 +1,18 @@
 import React from "react";
+import { IPokemonPartyMember } from "../interface";
+import PokedexPartyCard from "./PokedexPartyCard";
 
-const PokedexPartyList = () => {
+interface IProps {
+  party: IPokemonPartyMember[];
+  setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
+}
+
+const PokedexPartyList: React.FC<IProps> = ({ party, setParty }) => {
   return (
     <>
-      <h1>hello</h1>
+      {party.map((member) => (
+        <PokedexPartyCard id={member.id} name={member.name} sprite={member.sprite} party={party} setParty={setParty} />
+      ))}
     </>
   );
 };

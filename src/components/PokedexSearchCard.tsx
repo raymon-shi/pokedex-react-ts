@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Card, Container } from "react-bootstrap";
 import { useNavigate, NavigateFunction } from "react-router-dom";
+import pokedex from "../data/pokedex.json";
+import { IPokemonPartyMember } from "../interface";
 
 interface IPokedexSearchCard {
   id: number;
@@ -9,10 +11,13 @@ interface IPokedexSearchCard {
   species: string;
   description: string;
   thumbnail: string;
+  party: IPokemonPartyMember[];
+  setParty: React.Dispatch<React.SetStateAction<IPokemonPartyMember[]>>;
 }
 
-const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, species, description, thumbnail }) => {
+const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, species, description, thumbnail, party, setParty }) => {
   const navigate: NavigateFunction = useNavigate();
+
   return (
     <>
       <Container style={{ textAlign: "center" }}>
@@ -29,10 +34,23 @@ const PokedexSearchCard: React.FC<IPokedexSearchCard> = ({ id, name, type, speci
           </Container>
           <hr />
           <Container style={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
-            <Button style={{ width: "8rem" }} variant="success">
+            <Button
+              style={{ width: "8rem" }}
+              variant="success"
+              disabled={party.filter((member) => member.id === id).length >= 1}
+              onClick={() => {
+                setParty([...party, { id, name, sprite: pokedex[id - 1].image.sprite }]);
+              }}>
               Add
             </Button>
-            <Button style={{ width: "8rem" }} variant="danger">
+
+            <Button
+              style={{ width: "8rem" }}
+              variant="danger"
+              disabled={party.length === 0 || party.filter((member) => member.id === id).length === 0}
+              onClick={() => {
+                setParty(party.filter((member) => member.id !== id));
+              }}>
               Remove
             </Button>
             <Button style={{ width: "8rem" }} onClick={() => navigate(`/profile/${id}/${name}`)}>

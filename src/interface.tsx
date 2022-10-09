@@ -44,3 +44,9 @@ export interface IPokemon {
   profile: IProfile;
   image: IImage;
 }
+
+export interface IPokemonPartyMember {
+  id: number;
+  name: string;
+  sprite: string;
+}

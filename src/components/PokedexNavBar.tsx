@@ -11,7 +11,6 @@ const PokedexNavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/search">Search</Nav.Link>
               <Nav.Link href="/table">Table</Nav.Link>
             </Nav>
           </Navbar.Collapse>
