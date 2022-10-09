@@ -1,19 +1,16 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const PokedexNavBar = () => {
   return (
     <>
       <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="/">Pokedex</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/table">Table</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
+        <Container style={{ float: "left", justifyContent: "space-evenly" }}>
+          <Link to="/" style={{ marginRight: 10 }}>
+            Home
+          </Link>
+          <Link to="/table">Table</Link>
         </Container>
       </Navbar>
     </>
